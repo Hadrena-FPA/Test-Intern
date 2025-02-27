@@ -3,18 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Excel File Exchange</title>
+  <title>Hadrena - Excel File Exchange</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Inter', sans-serif;
     }
     
     body {
       background-color: #f5f5f5;
-      color: #333;
+      color: #000000;
       line-height: 1.6;
     }
     
@@ -27,21 +30,29 @@
     header {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       padding: 20px 0;
       border-bottom: 1px solid #eaeaea;
       margin-bottom: 30px;
     }
     
     .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #2c3e50;
       display: flex;
       align-items: center;
     }
     
-    .logo svg {
-      margin-right: 10px;
+    .logo-text {
+      font-weight: bold;
+      font-size: 24px;
+      margin-left: 10px;
+      color: #000000;
+    }
+    
+    .tagline {
+      font-size: 14px;
+      color: #000000;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     
     main {
@@ -60,9 +71,12 @@
     }
     
     h2 {
-      color: #2c3e50;
+      color: #000000;
       margin-bottom: 20px;
       font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: bold;
     }
     
     .form-group {
@@ -91,18 +105,23 @@
     }
     
     button {
-      background-color: #3498db;
+      background: linear-gradient(90deg, #092AF6, #312B81);
       color: white;
       border: none;
       padding: 12px 20px;
       border-radius: 4px;
       cursor: pointer;
       font-size: 16px;
-      transition: background-color 0.3s;
+      font-weight: bold;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     
     button:hover {
-      background-color: #2980b9;
+      background: linear-gradient(90deg, #312B81, #092AF6);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(9, 42, 246, 0.2);
     }
     
     .notification {
@@ -146,28 +165,85 @@
     .hidden-field {
       display: none;
     }
+    
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      color: #666;
+      font-size: 12px;
+      padding: 20px 0;
+      border-top: 1px solid #eaeaea;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(45deg, #092AF6, #7101A6, #FF2F48, #DB6BA8, #D4BA4A);
+      height: 5px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 25px;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(90deg, #092AF6, #7101A6);
+    }
+    
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+      }
+      
+      .logo {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .logo-text {
+        margin-top: 10px;
+        margin-left: 0;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
+    <div class="gradient-bg"></div>
     <header>
       <div class="logo">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-          <polyline points="14 2 14 8 20 8"></polyline>
-          <line x1="16" y1="13" x2="8" y2="13"></line>
-          <line x1="16" y1="17" x2="8" y2="17"></line>
-          <polyline points="10 9 9 9 8 9"></polyline>
+        <svg width="60" height="60" viewBox="0 0 400 300" fill="none">
+          <!-- Hadrena Stylized H Icon -->
+          <path d="M200 50 L150 80 L230 160 L150 240 L200 270 L300 180 L200 50Z" fill="url(#gradient)" />
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#092AF6;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#7101A6;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#FF2F48;stop-opacity:1" />
+            </linearGradient>
+          </defs>
         </svg>
-        Excel File Exchange
+        <div>
+          <div class="logo-text">HADRENA</div>
+          <div class="tagline">MORE THAN LEISURE. MEMORIES.</div>
+        </div>
       </div>
     </header>
     
     <main>
       <section class="section">
-        <h2>Receive Excel File</h2>
+        <div class="section-title">
+          <h2>RECEIVE EXCEL FILE</h2>
+        </div>
         <form id="receive-form" action="https://formsubmit.co/a.freslon@hadrena.com" method="POST">
-          <!-- Replace YOUR_EMAIL_HERE with your actual email -->
           <input type="hidden" name="_subject" value="Excel File Request">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
@@ -176,7 +252,7 @@
             <label for="email-receive">Your Email Address</label>
             <input type="email" name="email" id="email-receive" placeholder="example@domain.com" required>
           </div>
-          <button type="submit">Receive File</button>
+          <button type="submit">RECEIVE FILE</button>
         </form>
         <div id="receive-notification" class="notification"></div>
         <div class="notification-log">
@@ -186,9 +262,10 @@
       </section>
       
       <section class="section">
-        <h2>Submit Excel File</h2>
+        <div class="section-title">
+          <h2>SUBMIT EXCEL FILE</h2>
+        </div>
         <form id="submit-form" action="https://formsubmit.co/a.freslon@hadrena.com" method="POST" enctype="multipart/form-data">
-          <!-- Replace YOUR_EMAIL_HERE with your actual email -->
           <input type="hidden" name="_subject" value="Excel File Submission">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
@@ -205,11 +282,15 @@
             <label for="file-submit">Select Excel File</label>
             <input type="file" name="attachment" id="file-submit" accept=".xlsx, .xls" required>
           </div>
-          <button type="submit">Submit File</button>
+          <button type="submit">SUBMIT FILE</button>
         </form>
         <div id="submit-notification" class="notification"></div>
       </section>
     </main>
+    
+    <footer>
+      <p>© 2025 Hadrena Entertainment | 2 rue de Châteaudun, Paris 9</p>
+    </footer>
   </div>
 
   <script>
