@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excel File Exchange</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+    }
+    
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      display: flex;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid #eaeaea;
+      margin-bottom: 30px;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2c3e50;
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo svg {
+      margin-right: 10px;
+    }
+    
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    
+    .section {
+      flex: 1;
+      min-width: 300px;
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h2 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    
+    input[type="email"],
+    input[type="file"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    
+    button:hover {
+      background-color: #2980b9;
+    }
+    
+    .notification {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 4px;
+      display: none;
+    }
+    
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      display: block;
+    }
+    
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+      display: block;
+    }
+    
+    .notification-log {
+      margin-top: 20px;
+      max-height: 150px;
+      overflow-y: auto;
+      border: 1px solid #eaeaea;
+      padding: 10px;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+    }
+    
+    .log-entry {
+      font-size: 14px;
+      margin-bottom: 5px;
+      padding-bottom: 5px;
+      border-bottom: 1px dashed #eaeaea;
+    }
+
+    .hidden-field {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        Excel File Exchange
+      </div>
+    </header>
+    
+    <main>
+      <section class="section">
+        <h2>Receive Excel File</h2>
+        <form id="receive-form" action="https://formsubmit.co/a.freslon@hadrena.com" method="POST">
+          <!-- Replace YOUR_EMAIL_HERE with your actual email -->
+          <input type="hidden" name="_subject" value="Excel File Request">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          
+          <div class="form-group">
+            <label for="email-receive">Your Email Address</label>
+            <input type="email" name="email" id="email-receive" placeholder="example@domain.com" required>
+          </div>
+          <button type="submit">Receive File</button>
+        </form>
+        <div id="receive-notification" class="notification"></div>
+        <div class="notification-log">
+          <h3>Recent Requests</h3>
+          <div id="receive-log"></div>
+        </div>
+      </section>
+      
+      <section class="section">
+        <h2>Submit Excel File</h2>
+        <form id="submit-form" action="https://formsubmit.co/a.freslon@hadrena.com" method="POST" enctype="multipart/form-data">
+          <!-- Replace YOUR_EMAIL_HERE with your actual email -->
+          <input type="hidden" name="_subject" value="Excel File Submission">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          
+          <div class="form-group">
+            <label for="email-submit">Your Email Address</label>
+            <input type="email" name="email" id="email-submit" placeholder="example@domain.com" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message (Optional)</label>
+            <textarea name="message" id="message" placeholder="Add any comments about this file..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="file-submit">Select Excel File</label>
+            <input type="file" name="attachment" id="file-submit" accept=".xlsx, .xls" required>
+          </div>
+          <button type="submit">Submit File</button>
+        </form>
+        <div id="submit-notification" class="notification"></div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Handle receiving file request client-side logging and download trigger
+    document.getElementById('receive-form').addEventListener('submit', function(e) {
+      // Log the request
+      window.open('https://raw.githubusercontent.com/Hadrena-FPA/Test-Intern/refs/heads/main/Test.xlsx', '_blank');
+      const email = document.getElementById('email-receive').value;
+      const log = document.getElementById('receive-log');
+      const now = new Date();
+      const timeString = now.toLocaleString();
+      const logEntry = document.createElement('div');
+      logEntry.className = 'log-entry';
+      logEntry.textContent = `${timeString}: Request from ${email}`;
+      log.prepend(logEntry);
+      
+      // Trigger the file download in a new tab
+      
+      
+      // Let the form submit normally to the FormSubmit service
+    });
+    
+    // Handle file validation before submission
+    document.getElementById('file-submit').addEventListener('change', function() {
+      const file = this.files[0];
+      const notification = document.getElementById('submit-notification');
+      
+      if (file) {
+        // Check if it's an Excel file
+        const validTypes = ['.xlsx', '.xls'];
+        const fileExt = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
+        
+        if (!validTypes.includes(fileExt)) {
+          notification.textContent = 'Please upload only Excel files (.xlsx or .xls)';
+          notification.className = 'notification error';
+          this.value = ''; // Clear the file input
+          return;
+        } else {
+          notification.textContent = `File "${file.name}" selected`;
+          notification.className = 'notification success';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
